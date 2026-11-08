@@ -1,0 +1,31 @@
+name = "asdle1"
+main = "worker.js"
+compatibility_date = "2026-11-05"
+workers_dev = true
+preview_urls = false
+
+[observability]
+enabled = true
+
+# تنظيف يومي: بيمسح الوسائط الأقدم من 14 يوم والرسائل المستلمة القديمة.
+[triggers]
+crons = ["17 3 * * *"]
+
+# اسم القاعدة القديم adwmx (القاعدة نفسها وبياناتها — الاسم ده مش بيظهر لأي مستخدم).
+[[d1_databases]]
+binding = "DB"
+database_name = "adwmx"
+database_id = "367162b1-3028-47eb-9128-2f78aeec707a"
+
+# تخزين الصور والفويس: بيشتغل في D1 تلقائياً. لو عايز R2 (أسرع وأوسع) فعّل الأسطر دي
+# بعد إنشاء الـ bucket:  npx wrangler r2 bucket create asdle-media
+# [[r2_buckets]]
+# binding = "MEDIA"
+# bucket_name = "asdle-media"
+
+[vars]
+# رقم المطور (نفس رقم حسابك في التطبيق). بيعطيه: صندوق البلاغات، حذف الحسابات، لوحة الإدارة، علامة التوثيق.
+# أسهل طريقة:  sh set_dev_phone.sh 01012345678   (من مجلد المشروع الرئيسي)
+DEVELOPER_PHONE = ""
+# "true" يعرض سبب الخطأ الحقيقي في التطبيق (للتشخيص بس).
+DEBUG = "false"

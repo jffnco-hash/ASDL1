@@ -1,0 +1,14 @@
+{
+  "name": "asdle-server",
+  "private": true,
+  "version": "4.0.0",
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 execute adwmx --remote --file=./schema.sql",
+    "ping": "node ./check.mjs",
+    "test": "node --no-warnings ./test/run.mjs",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": { "wrangler": "^4" }
+}
